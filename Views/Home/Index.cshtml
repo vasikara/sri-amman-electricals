@@ -1,0 +1,161 @@
+﻿@model List<TourPackage>
+@{
+        ViewData["Title"] = "Home";
+         
+}
+<div class="container mt-4">
+
+    <!-- 🔹 Header -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Welcome to JourneySpire</h2>
+        <p class="text-muted">Explore destinations, tour packages and travel experiences</p>
+    </div>
+
+    <!-- 🔹 3*2 Grid Section -->
+    <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="~/images/subscribe-img.jpg" class="card-img-top" alt="Travel">
+                <div class="card-body">
+                    <h5 class="card-title">Adventure Travel</h5>
+                    <p class="card-text">
+                        Enjoy thrilling activities and discover breathtaking landscapes
+                        around the world.
+                    </p>
+
+                    <p> ₹4999.00</p>
+
+                </div> 
+                      <a asp-controller="Booking"
+                       asp-action="Create"
+                       class="btn btn-success">
+                        Book Now
+                      </a> 
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="~/images/explore-tour-6.jpg" class="card-img-top" alt="Travel">
+                <div class="card-body">
+                    <h5 class="card-title">Beach Holidays</h5>
+                    <p class="card-text">
+                        Relax on pristine beaches, crystal clear waters and
+                        unforgettable sunset views.
+                    </p>
+
+                    <p> ₹7999.00</p>
+
+                </div>
+
+                <a asp-controller="Booking"
+                   asp-action="Create"
+                   class="btn btn-success">
+                    Book Now
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="~/images/blog-3.jpg" class="card-img-top" alt="Travel">
+                <div class="card-body">
+                    <h5 class="card-title">Holiday Tours</h5>
+                    <p class="card-text">
+                        Experience heritage, history, festivals and traditional
+                        lifestyles of unique destinations.
+                    </p>
+
+                    <p> ₹1099.00</p>
+
+                </div>
+
+                <a asp-controller="Booking"
+                   asp-action="Create"
+                   class="btn btn-success">
+                    Book Now
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="~/images/explore-tour-3.jpg" class="card-img-top" alt="Travel">
+                <div class="card-body">
+                    <h5 class="card-title">Honeymoon Packages</h5>
+                    <p class="card-text">
+                        Romantic getaways and luxury resorts for unforgettable
+                        moments with your loved one.
+                    </p>
+
+                    <p> ₹7999.00</p>
+
+                </div>
+
+                <a asp-controller="Booking"
+                   asp-action="Create"
+                   class="btn btn-success">
+                    Book Now
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="~/images/carousel-3.jpg" class="card-img-top" alt="Travel">
+                <div class="card-body">
+                    <h5 class="card-title">Wildlife Safari</h5>
+                    <p class="card-text">
+                        Discover spectacular nature and see rare wildlife
+                        in national parks and forests.
+                    </p>
+
+                    <p> ₹9999.00</p>
+
+                </div>
+
+                <a asp-controller="Booking"
+                   asp-action="Create"
+                   class="btn btn-success">
+                    Book Now
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="~/images/gallery-10.jpg" class="card-img-top" alt="Travel">
+                <div class="card-body">
+                    <h5 class="card-title">City Tours</h5>
+                    <p class="card-text">
+                        Explore famous cities, landmarks, museums and local
+                        food experiences.
+                    </p>
+
+                    <p> ₹1299.00</p>
+
+                </div>
+
+                <a asp-controller="Booking"
+                   asp-action="Create"
+                   class="btn btn-success">
+                    Book Now
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

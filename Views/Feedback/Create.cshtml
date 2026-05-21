@@ -1,0 +1,44 @@
+﻿@model JourneySpire.Models.Feedback
+
+@{
+    ViewData["Title"] = "Feedback";
+    Layout = "_HomeLayout";
+}
+
+<h3>Give Your Feedback</h3>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label>Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Message</label>
+        <textarea asp-for="Message" class="form-control"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Rating</label>
+        <select asp-for="Rating" class="form-select">
+            <option value="">-- Select --</option>
+            <option value="1">1 ⭐</option>
+            <option value="2">2 ⭐⭐</option>
+            <option value="3">3 ⭐⭐⭐</option>
+            <option value="4">4 ⭐⭐⭐⭐</option>
+            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+        </select>
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary">Submit Feedback</button>
+</form>

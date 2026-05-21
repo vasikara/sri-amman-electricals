@@ -1,0 +1,45 @@
+﻿@model JourneySpire.Models.Payment
+
+@{
+    ViewData["Title"] = "Confirm Payment";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Confirm Payment</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form asp-action="Create" method="post">
+    @Html.HiddenFor(m => m.BookingId)
+
+    <div class="form-group"required>
+        <label>Customer Name</label>
+        @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control",   })
+    </div>
+
+    <div class="form-group" required>
+        <label>Package Name</label>
+        @Html.TextBoxFor(m => m.PackageName, new { @class = "form-control"  })
+    </div>
+
+    <div class="form-group" required>
+        <label>Amount</label>
+        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control " })
+    </div>
+
+    <div class="form-group" required>
+        <label>Payment Mode</label>
+        @Html.DropDownListFor(m => m.PaymentMode,
+        new SelectList(new[] { "Cash", "Card", "UPI" }),
+                "Select Payment Mode",
+                new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Confirm Payment
+    </button>
+</form>

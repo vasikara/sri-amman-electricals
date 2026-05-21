@@ -1,0 +1,14 @@
+﻿@model JourneySpire.Models.Feedback
+@{
+    Layout = "_Layout";
+}
+
+<h4>Feedback Details</h4>
+
+<p><b>Name:</b> @Model.FullName</p>
+<p><b>Email:</b> @Model.Email</p>
+<p><b>Rating:</b> @Model.Rating ⭐</p>
+<p><b>Message:</b> @Model.Message</p>
+<p><b>Date:</b> @Model.CreatedDate</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>

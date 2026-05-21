@@ -1,0 +1,59 @@
+﻿@model JourneySpire.Models.Booking
+
+@{
+    ViewData["Title"] = "Delete Booking";
+
+    Layout = "_HomeLayout";
+}
+
+<h2 class="text-danger">Delete Booking</h2>
+<hr />
+
+<div class="alert alert-warning">
+    <strong>Warning!</strong>
+    Are you sure you want to delete this booking?
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th style="width:30%">Booking ID</th>
+        <td>@Model.BookingId</td>
+    </tr>
+
+    <tr>
+        <th>Package Name</th>
+        <td>@Model.PackageName</td>
+    </tr>
+
+    <tr>
+        <th>Customer Name</th>
+        <td>@Model.CustomerName</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+
+    <tr>
+        <th>Total Amount</th>
+        <td><b>₹ @Model.TotalAmount</b></td>
+    </tr>
+
+    <tr>
+        <th>Status</th>
+        <td>@Model.BookingStatus</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="BookingId" />
+
+    <button type="submit" class="btn btn-danger">
+        Yes, Delete
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>

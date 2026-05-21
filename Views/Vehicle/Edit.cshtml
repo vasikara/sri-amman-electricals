@@ -1,0 +1,29 @@
+﻿@model JourneySpire.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Vehicle Edit";
+    Layout = "_HomeLayout";
+}
+
+<h2>Edit Vehicle</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="VehicleId" />
+
+    <div class="mb-2">
+        <label>Vehicle Number</label>
+        <input asp-for="VehicleNumber" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Vehicle Type</label>
+        <input asp-for="VehicleType" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Capacity</label>
+        <input asp-for="Capacity" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

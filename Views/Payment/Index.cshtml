@@ -1,0 +1,49 @@
+﻿@model IEnumerable<JourneySpire.Models.Payment>
+
+@{
+    ViewData["Title"] = "Payments";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Payments</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Package</th>
+            <th>Amount</th>
+            <th>Mode</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerName</td>
+                <td>@item.PackageName</td>
+                <td>@item.Amount</td>
+                <td>@item.PaymentMode</td>
+                <td>@item.PaymentStatus</td>
+                <td>@item.PaymentDate.ToString("dd-MMM-yyyy")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.PaymentId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PaymentId">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="7" class="text-center">No payments found</td>
+        </tr>
+    }
+    </tbody>
+</table>

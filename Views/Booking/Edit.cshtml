@@ -1,0 +1,122 @@
+﻿@model JourneySpire.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Edit Booking</h2>
+<hr />
+
+<form asp-action="Edit" method="post">
+
+    @Html.HiddenFor(model => model.BookingId)
+    @Html.HiddenFor(model => model.PackageId)
+
+    <input type="hidden" asp-for="BookingId" />
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <label>Package Id</label>
+            <input asp-for="PackageId" class="form-control"  />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Package Name</label>
+            <input asp-for="PackageName" class="form-control"  />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Customer Name</label>
+            <input asp-for="CustomerName" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Email</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Phone</label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Travel Date</label>
+            <input asp-for="TravelDate" type="date" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>End Date</label>
+            <input asp-for="EndDate" type="date" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Number Of Persons</label>
+            <input asp-for="NumberOfPersons"
+                   id="persons"
+                   class="form-control"
+                   onkeyup="calculateTotal()" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Price (per person)</label>
+            <input asp-for="Price"
+                   id="price"
+                   class="form-control"
+                   onkeyup="calculateTotal()" />
+        </div>
+
+        <!-- 🔥 PREVIEW ONLY -->
+        <div class="col-md-6 mb-3">
+            <label>Total Amount</label>
+            <input type="text"
+                   id="totalAmount"
+                   class="form-control"
+                   value="@Model.TotalAmount"
+                   readonly />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Status</label>
+            <select asp-for="BookingStatus" class="form-control">
+                <option>Pending</option>
+                <option>Confirmed</option>
+                <option>Cancelled</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Update Booking
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>
+
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+@section Scripts {
+    <script>
+        function calculateTotal() {
+            var persons = document.getElementById("persons").value;
+            var price = document.getElementById("price").value;
+
+            if (persons && price) {
+                document.getElementById("totalAmount").value =
+                    (persons * price).toFixed(2);
+            }
+        }
+    </script>
+}

@@ -1,0 +1,30 @@
+﻿@model JourneySpire.Models.TourPackage
+
+@{
+    ViewData["Title"] = "Package Details";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Tour Package Details</h2>
+<hr />
+
+<div class="card p-3">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.ImagePath" class="img-fluid rounded" />
+        </div>
+
+        <div class="col-md-8">
+            <h4>@Model.PackageName</h4>
+            <p><b>Location:</b> @Model.Location</p>
+            <p><b>Days:</b> @Model.Days</p>
+            <p><b>Price:</b> ₹ @Model.Price</p>
+            <p><b>Description:</b><br />@Model.Description</p>
+
+            <a asp-action="Edit" asp-route-id="@Model.PackageId" class="btn btn-warning">Edit</a>
+            <a asp-action="Delete" asp-route-id="@Model.PackageId" class="btn btn-danger">Delete</a>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>

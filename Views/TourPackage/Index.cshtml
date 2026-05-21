@@ -1,0 +1,48 @@
+﻿@using System.Data
+@model DataTable
+
+@{
+    ViewData["Title"] = "Tour Packages";
+
+    Layout = "_Homelayout";
+
+}
+
+<h2>Tour Packages</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add New Package</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Package Name</th>
+            <th>Location</th>
+            <th>Days</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (DataRow row in Model.Rows)
+{
+        <tr>
+            <td>
+                <img src="@row["ImagePath"]" width="100" />
+            </td>
+            <td>@row["PackageName"]</td>
+            <td>@row["Location"]</td>
+            <td>@row["Days"]</td>
+            <td>₹ @row["Price"]</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@row["PackageId"]"
+                   class="btn btn-warning btn-sm">Edit</a>
+
+                <a asp-action="Delete" asp-route-id="@row["PackageId"]"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

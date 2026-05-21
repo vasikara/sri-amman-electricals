@@ -1,0 +1,41 @@
+﻿@model IEnumerable<JourneySpire.Models.AdminModel>
+@{
+    ViewData["Title"] = "Admin List";
+    Layout = "_HomeLayout";
+}
+
+<div class="table-container">
+    <h2 class="page-title">Admin List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="color: white; font-size: large;" >
+                    <td>@item.FullName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Role</td>
+                    <td>@item.Phone</td>
+                    <td class="action-btns">
+                        <a asp-action="Edit" asp-route-id="@item.AdminId" class="btn btn-warning">Edit</a>
+                            
+                        <a asp-action="Delete" asp-route-id="@item.AdminId"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Are you sure you want to delete?');">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

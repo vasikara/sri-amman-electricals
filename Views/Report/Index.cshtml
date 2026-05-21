@@ -1,0 +1,49 @@
+﻿@model IEnumerable<JourneySpire.Models.Report>
+@{
+    ViewData["Title"] = "Reports";
+    Layout = "_HomeLayout";
+}
+
+<h2>Report List</h2>
+
+<a asp-action="Create" class="btn btn-success mb-3">+ New Report</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Generated</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ReportId</td>
+                <td>@item.ReportType</td>
+                <td>@item.FromDate?.ToShortDateString()</td>
+                <td>@item.ToDate?.ToShortDateString()</td>
+                <td>@item.GeneratedOn</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ReportId" class="btn btn-info btn-sm">View</a>
+                    <a asp-action="Edit" asp-route-id="@item.ReportId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ReportId" class="btn btn-danger btn-sm">Delete</a>
+
+                    <a asp-action="ExportToExcel"
+                       asp-route-reportId="@item.ReportId"
+                       asp-route-reportType="@item.ReportType"
+                       class="btn btn-success btn-sm">Excel</a>
+
+                    <a asp-action="ExportToPdf"
+                       asp-route-reportId="@item.ReportId"
+                       asp-route-reportType="@item.ReportType"
+                       class="btn btn-secondary btn-sm">PDF</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

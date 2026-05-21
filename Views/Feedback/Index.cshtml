@@ -1,0 +1,38 @@
+﻿@model List<JourneySpire.Models.Feedback>
+
+@{
+    ViewData["Title"] = "Feedback List";
+    Layout = "_Layout";
+}
+
+<h3>Customer Feedback</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Rating</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.Email</td>
+            <td>@item.Rating ⭐</td>
+            <td>@(item.IsApproved ? "Approved" : "Pending")</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.FeedbackId">View</a> |
+                <a asp-action="Delete" asp-route-id="@item.FeedbackId">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">  
+        @TempData["Success"]
+    </div>
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<JourneySpire.Models.Guide>
+
+@{
+    ViewData["Title"] = "Guide List";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Guide Management</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add New Guide</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Language</th>
+            <th>Experience</th>
+            <th>Status</th>
+            <th>Available</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var g in Model)
+        {
+            <tr>
+                <td>@g.FullName</td>
+                <td>@g.Phone</td>
+                <td>@g.Language</td>
+                <td>@g.Experience Years</td>
+                <td>@g.Status</td>
+                <td>
+                    @(g.IsAvailable ? "Yes" : "No")
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@g.GuideId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@g.GuideId"
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('Are you sure?');">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

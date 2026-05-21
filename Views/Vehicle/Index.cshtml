@@ -1,0 +1,36 @@
+﻿@model IEnumerable<JourneySpire.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Vehicle List";
+    Layout = "_HomeLayout";
+}
+
+<h2>Vehicle List</h2>
+<a asp-action="Create" class="btn btn-primary mb-2">Add Vehicle</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Vehicle No</th>
+            <th>Type</th>
+            <th>Capacity</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.VehicleNumber</td>
+                <td>@v.VehicleType</td>
+                <td>@v.Capacity</td>
+                <td>@(v.IsAvailable ? "Available" : "Not Available")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@v.VehicleId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@v.VehicleId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

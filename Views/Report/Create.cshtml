@@ -1,0 +1,32 @@
+﻿@model JourneySpire.Models.Report
+@{
+    ViewData["Title"] = "Create Report";
+    Layout = "_HomeLayout";
+}
+
+<h2>Create Report</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label>Report Type</label>
+        <select asp-for="ReportType" class="form-control" required>
+            <option value="">-- Select --</option>
+            <option value="Booking">Booking</option>
+            <option value="Payment">Payment</option>
+            <option value="Guide">Guide</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>From Date</label>
+        <input asp-for="FromDate" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>To Date</label>
+        <input asp-for="ToDate" type="date" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Generate</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

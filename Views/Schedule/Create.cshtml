@@ -1,0 +1,43 @@
+﻿@model JourneySpire.Models.Schedule
+
+@{
+    ViewData["Title"] = "Vehicle Schedule";
+    Layout = "_HomeLayout";
+}
+
+
+<h2>Create Schedule</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-2">
+        <label>Vehicle</label>
+        <select asp-for="VehicleId" asp-items="ViewBag.Vehicles" class="form-control"></select>
+    </div>
+
+    <div class="mb-2">
+        <label>Driver</label>
+        <select asp-for="DriverId" asp-items="ViewBag.Drivers" class="form-control"></select>
+    </div>
+
+    <div class="mb-2">
+        <label>Route</label>
+        <select asp-for="RouteId" asp-items="ViewBag.Routes" class="form-control"></select>
+    </div>
+
+    <div class="mb-2">
+        <label>Date</label>
+        <input asp-for="ScheduleDate" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Start Time</label>
+        <input asp-for="StartTime" type="time" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>End Time</label>
+        <input asp-for="EndTime" type="time" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

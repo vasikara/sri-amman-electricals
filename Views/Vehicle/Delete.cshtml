@@ -1,0 +1,16 @@
+﻿@model JourneySpire.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Vehicle Delete";
+    Layout = "_HomeLayout";
+}
+
+<h2>Delete Vehicle</h2>
+
+<p>Are you sure to delete <b>@Model.VehicleNumber</b>?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="VehicleId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

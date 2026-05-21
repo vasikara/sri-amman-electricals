@@ -1,0 +1,73 @@
+﻿@model JourneySpire.Models.Route
+
+@{
+    ViewData["Title"] = "Add Route";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Add Route</h2>
+<hr />
+
+<h2>Add Driver</h2>
+<hr />
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Source Location</label>
+        <input asp-for="SourceLocation" class="form-control" />
+        <span asp-validation-for="SourceLocation" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Destination Location</label>
+        <input asp-for="DestinationLocation" class="form-control" />
+        <span asp-validation-for="DestinationLocation" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Distance(KM)</label>
+        <input asp-for="DistanceKm" id="DistanceKM" name="DistanceKM" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Estimated Time</label>
+        <input asp-for="EstimatedTime" id="EstimatedTime" name="EstimatedTime" class="form-control" placeholder="e.g. 5 Hours"
+        oninput="calcilateDistance()"/>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Save
+    </button>
+    <a asp-action="Index" class="btn btn-secondary">
+        Back
+    </a>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<script>
+
+    function calculateDistance()  
+    {
+        var time = document.getElementById("EstimatedTime").value;
+
+        if(time && time > 0)
+        {
+            var distance = time * 60;
+
+            document.getElementById("DistanceKM").value = distance;
+        }
+        else{
+
+            document.getElementById("DistanceKM").value = 0;
+
+        }
+
+    }
+
+</script>

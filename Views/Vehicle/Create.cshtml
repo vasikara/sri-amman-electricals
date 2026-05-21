@@ -1,0 +1,28 @@
+﻿@model JourneySpire.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Vehicle Create";
+    Layout = "_HomeLayout";
+}
+
+<h2>Add Vehicle</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-2">
+        <label>Vehicle Number</label>
+        <input asp-for="VehicleNumber" class="form-control" />
+        <span asp-validation-for="VehicleNumber"></span>
+    </div>
+
+    <div class="mb-2">
+        <label>Vehicle Type</label>
+        <input asp-for="VehicleType" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Capacity</label>
+        <input asp-for="Capacity" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

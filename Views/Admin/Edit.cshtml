@@ -1,0 +1,48 @@
+﻿@model JourneySpire.Models.AdminModel
+
+@{
+    ViewData["Title"] = "Edit Admin";
+    Layout = "_HomeLayout";
+}
+
+<h2>Edit Admin</h2>
+
+<hr />
+
+<form asp-action="Edit" method="post">
+    <!-- Hidden AdminId -->
+    <input type="hidden" asp-for="AdminId" />
+
+    <div class="form-group mb-3">
+        <label asp-for="FullName" class="form-label"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <!-- Email display only -->
+    <div class="form-group mb-3">
+        <label>Email</label>
+        <input class="form-control" value="@Model.Email" readonly />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Role" class="form-label"></label>
+        <input asp-for="Role" class="form-control" />
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

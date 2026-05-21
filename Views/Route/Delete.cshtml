@@ -1,0 +1,44 @@
+﻿@model JourneySpire.Models.Route
+
+@{
+    ViewData["Title"] = "Delete Route";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Delete Route</h2>
+<hr />
+
+<div class="alert alert-danger">
+    Are you sure you want to delete this route?
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Source</th>
+        <td>@Model.SourceLocation</td>
+    </tr>
+    <tr>
+        <th>Destination</th>
+        <td>@Model.DestinationLocation</td>
+    </tr>
+    <tr>
+        <th>Distance</th>
+        <td>@Model.DistanceKm</td>
+    </tr>
+    <tr>
+        <th>Estimated Time</th>
+        <td>@Model.EstimatedTime</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="RouteId" />
+
+    <button type="submit" class="btn btn-danger">
+        Delete
+    </button>
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>

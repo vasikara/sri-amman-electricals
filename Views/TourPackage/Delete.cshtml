@@ -1,0 +1,48 @@
+﻿@model JourneySpire.Models.TourPackage
+
+@{
+    ViewData["Title"] = "Delete Tour Package";
+
+    Layout = "_HomeLayout";
+}
+
+<h2 class="text-danger">Delete Tour Package</h2>
+<hr />
+
+<div class="alert alert-warning">
+    <strong>Are you sure?</strong>
+    This action cannot be undone.
+</div>
+
+<div class="card p-3 mb-3">
+    <dl class="row">
+        <dt class="col-sm-3">Package Name</dt>
+        <dd class="col-sm-9">@Model.PackageName</dd>
+
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9">@Model.Location</dd>
+
+        <dt class="col-sm-3">Days</dt>
+        <dd class="col-sm-9">@Model.Days</dd>
+
+        <dt class="col-sm-3">Price</dt>
+        <dd class="col-sm-9">₹ @Model.Price</dd>
+
+        <dt class="col-sm-3">Image</dt>
+        <dd class="col-sm-9">
+            <img src="@Model.ImagePath" width="150" />
+        </dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="PackageId" />
+
+    <button type="submit" class="btn btn-danger">
+        Yes, Delete
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>

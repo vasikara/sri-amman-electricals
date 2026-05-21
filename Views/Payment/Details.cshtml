@@ -1,0 +1,21 @@
+﻿@model JourneySpire.Models.Payment
+
+@{
+    ViewData["Title"] = "Payment Details ";
+
+    Layout = "_HomeLayout";
+}
+
+<h2>Payment Details</h2>
+
+<table class="table table-bordered">
+    <tr><th>Customer</th><td>@Model.CustomerName</td></tr>
+    <tr><th>Package</th><td>@Model.PackageName</td></tr>
+    <tr><th>Amount</th><td>@Model.Amount</td></tr>
+    <tr><th>Mode</th><td>@Model.PaymentMode</td></tr>
+    <tr><th>Status</th><td>@Model.PaymentStatus</td></tr>
+    <tr><th>Transaction</th><td>@Model.TransactionId</td></tr>
+    <tr><th>Date</th><td>@Model.PaymentDate</td></tr>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>

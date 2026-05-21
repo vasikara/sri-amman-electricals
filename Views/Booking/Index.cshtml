@@ -1,0 +1,89 @@
+﻿@model List<JourneySpire.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+
+    Layout = "_HomeLayout";
+}
+
+<h2 class="mb-3">Bookings List</h2>
+
+<a asp-action="Create" class="btn btn-success mb-3">
+    + Create Booking
+</a>
+
+@if (Model != null && Model.Count > 0)
+
+{
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Booking ID</th>
+            <th>Package</th>
+            <th>Customer</th>
+            <th>Persons</th>
+            <th>Price</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th style="width:220px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookingId</td>
+                <td>@item.PackageName</td>
+                <td>@item.CustomerName</td>
+                <td>@item.NumberOfPersons</td>
+                <td>₹ @item.Price</td>
+                <td><b>₹ @item.TotalAmount</b></td>
+
+                <td>
+                    @if (item.BookingStatus == "Confirmed")
+                    {
+                        <span class="badge bg-success">Confirmed</span>
+                    }
+                    else if (item.BookingStatus == "Cancelled")
+                    {
+                        <span class="badge bg-danger">Cancelled</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    }
+                </td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@item.BookingId"
+                       class="btn btn-info btn-sm">Details</a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@item.BookingId"
+                       class="btn btn-primary btn-sm">Edit</a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.BookingId"
+                       class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No bookings available.
+    </div>
+}
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}

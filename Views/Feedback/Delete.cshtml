@@ -1,0 +1,16 @@
+﻿@model JourneySpire.Models.Feedback
+@{
+    Layout = "_Layout";
+}
+
+<h4 class="text-danger">Delete Feedback</h4>
+
+<p>Are you sure you want to delete this feedback?</p>
+
+<p><b>@Model.FullName</b> - @Model.Email</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="FeedbackId" />
+    <button class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
